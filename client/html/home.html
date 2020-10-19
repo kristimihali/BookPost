@@ -1,0 +1,43 @@
+<template name="posts">
+    {{ #if currentUser }}
+    {{ > postForm }}
+
+        {{ #each posts }}
+        <!-- Post--> 
+    	<div class="jumbotron">
+    		<div class="container">
+	            <div class="row">
+	                <div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
+	                    <h1 class="display-4">Post Title: {{ postName }}</h1>
+	                    <p class="lead">
+		              " {{ postPost }} "      
+            			</p>
+	                </div>
+	            </div>
+	        </div>
+	       	<div class="container">
+   				<small><p class="meta">Author: {{ author }} ~ 
+   					<time>Posted: {{ date }}</time></p>
+   				</small>
+                <p class="meta">Book Author: {{ bookAuthor }} ~ Book Title: {{ bookTitle }}</p>
+	       	</div>
+	        
+		    <div class="container">
+	                <hr class="my-4">
+	                <br>
+	                <div class="row" id="score">
+	                    <h3 class="count red block">{{ loveScore }}</h3>
+	                </div>
+	                <div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
+	                    <img src="like.png" class="smiley" id="love">
+	                </div>
+    		</div>
+   		 </div>
+        <!-- End post -->
+        {{ else }}
+    		<h2>No Posts to display.</h2>
+    	{{ /each }}
+    {{ else }}
+    	{{ > welcome }}
+    {{/if}}
+</template>

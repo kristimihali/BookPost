@@ -1,0 +1,51 @@
+<template name="profile">
+	{{#if currentUser}}
+		<!-- This is where the user Profile starts. -->
+		<div id="profile-wrap">
+			<center>
+				<img src="bill.jpg" class="profile-img">
+				<h1 class="username">{{ username }}</h1>
+				<h3>{{ email }}</h3>
+				<div class="" id="">
+					<img src="love.png" class="profile-smiley" id='love'>
+					<img src="neutral.png" class="profile-smiley" id='neutral'>
+					<img src="sad.png" class="profile-smiley" id='sad'>
+				</div>
+				<div class="score" id="">
+					<h3 class="count red block">{{ userLoveScore }}</h3>
+					<h3 class="count yellow block">{{ userNeutralScore }}</h3>
+					<h3 class="count green block">{{ userSadScore }}</h3>
+
+				</div>
+			</center>
+		</div>
+		<!-- This is where the user Profile ends. -->
+		{{ #each userPosts }}
+		<!-- joke! -->
+			<div class="post">
+				<div class="row">
+					<div class=".col-sm-6 .col-md-5 .col-lg-6" id="info">
+						<h1 class ="post-title">{{ postName }}</h1>	
+						<p class="meta">Author: {{ author }}</p>
+						<p class="meta">Posted on: {{ date }}</p>
+					</div>
+					<div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
+						<img src="love.png" class="smiley" id="love">
+						<img src="neutral.png" class="smiley" id="neutral">
+						<img src="sad.png" class="smiley" id="sad">
+					</div>
+					<div class="row" id="score">
+						<h3 class="count red block">{{ loveScore }}</h3>
+						<h3 class="count yellow block">{{ neutralScore }}</h3>
+						<h3 class="count green block">{{ sadScore }}</h3>
+					</div>
+				</div>
+				<p class="regular post-desc">{{ postPost }}</p>
+				<button class="btn btn-sml btn-danger" id="delete-post">Delete Post</button>
+			</div>
+		<!-- End joke! -->
+	{{ else }}
+		<h2>No jokes to display</h2>
+	{{ /each }}
+{{/if}}
+</template>
