@@ -1,14 +1,10 @@
-<template name="posts">
-    {{ #if currentUser }}
-    {{ > postForm }}
-
-        {{ #each posts }}
-        <!-- Post--> 
+<template name="postOpinion">
+	<!-- Post--> 
     	<div class="jumbotron">
     		<div class="container">
 	            <div class="row">
 	                <div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
-	                    <a href="/post/{{_id}}"><h3 class="display-4">Post Title: {{ postName }}</h3></a>
+	                    <h3 class="display-4">Post Title: {{ postName }}</h3>
 	                    <p class="lead">
 		              	" {{ postPost }} "      
             			</p>
@@ -34,10 +30,4 @@
     		</div>
    		 </div>
         <!-- End post -->
-        {{ else }}
-    		<h2>No Posts to display.</h2>
-    	{{ /each }}
-    {{ else }}
-    	{{ > welcome }}
-    {{/if}}
 </template>
