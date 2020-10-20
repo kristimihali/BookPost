@@ -48,6 +48,19 @@
   box-sizing: border-box;
 }
 
+
+/*.post-post {
+ width: 550px;
+ height: 450px;
+ margin: auto;
+ position: relative;
+}
+*/
+.smiley-profile {
+  width: 50px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
 .smiley {
   width: 50px;
   padding-left: 10px;
@@ -443,6 +456,28 @@ h6, .h6 {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+  color:black;
+}
+
+.display-4 a{
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color:black;
+}
+
+.display-4 a {
+  text-decoration: none;
+}
+
+.display-4:link a{
+  text-decoration: none;
+}
+.display-4:hover a{
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  color: gray;
 }
 
 hr {

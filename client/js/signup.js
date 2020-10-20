@@ -11,6 +11,7 @@ Template.signup.events({
 		var email = trimInput(event.target.email.value);
 		var password = trimInput(event.target.password.value);
 		var password2 = trimInput(event.target.password2.value);
+		var profileImage = trimInput("neutral.png");
 
 		if(isNotEmpty(email) && isNotEmpty(username) && isEmail(email) && areValidPasswords(password, password2)){
 			//do stuff
@@ -19,9 +20,8 @@ Template.signup.events({
 				email: email,
 				password: password,
 				profile: {
+					profileImage: profileImage,
 					loveScore: 0,
-					neutralScore: 0,
-					sadScore: 0,
 					voted:[],
 				}
 			}, function(error){

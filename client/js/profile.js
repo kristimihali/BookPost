@@ -26,6 +26,15 @@ Template.profile.helpers({
 		}
 	},
 
+	profileImage: function(){
+		if(!Meteor.user()){
+			Bert.alert("You are not logged in. Permission denied!","danger","growl-top-right");
+			return false;
+		}else{
+			return Meteor.user().profile.profileImage;
+		}
+	},
+
 	userPosts: function(){
 		var username = Meteor.user().username;
 		var userId = Meteor.userId();
