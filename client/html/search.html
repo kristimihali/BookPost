@@ -1,3 +1,62 @@
 <template name="search">
-	
+	{{ #if currentUser }}
+		<!--  Search  -->
+		<br><br><br>
+		<div id='search-wrap'>
+			<!-- easy search -->
+			Search Page
+			<div class="black searchbar">
+				{{ > EasySearch.Input index=playersIndex attributes=inputAttributes }}
+			</div>
+
+			{{ #EasySearch.IfInputEmpty index=playersIndex }}
+				<div class="padded examples black"> For example: "Victor Hugo"
+				</div>
+			{{ else }}
+				{{ #if resultsCount }}
+					<div class="padded count-results black">{{resultsCount}} results found</div>
+				{{ /if }}
+			{{ /EasySearch.IfInputEmpty }}
+
+			{{ #EasySearch.IfSearching index=playersIndex }}
+				<div>Searching...</div>
+			{{ /EasySearch.IfSearching }}
+
+			<ol class="leaderboard">
+				{{ #EasySearch.Each index=playersIndex }}
+					{{ > User }}
+				{{ /EasySearch.Each }}
+			</ol>
+
+			{{ #EasySearch.IfNoResults index=playersIndex }}
+				<div class="padded no-results black">No results found</div>
+			{{else}}
+			{{ /EasySearch.IfNoResults }}
+
+
+			{{ > EasySearch.Pagination index=playersIndex maxPages=10 }}
+			{{ ! > EasySearch.LoadMore index=playersIndex }}
+
+			{{ #if showMore }}
+				{{> EasySearch.Input name="mini-index" index=index attributes=inputAttributes }}
+				<ul>
+					{{#EasySearch.Each name="mini-index" index=playersIndex}}
+						<li>{{postName}}</li>
+					{{/EasySearch.Each}}
+				</ul>
+			{{ /if }}
+
+			<!-- end easy search -->
+
+			<!-- {{> EasySearch.Input index=playersIndex }} -->
+
+<!--     <ul>
+        {{#EasySearch.Each index=playersIndex }}
+            <li>Name of the player: {{postName}}{{_id}}</li>
+        {{/EasySearch.Each}}
+    </ul> -->
+
+		</div>
+		<!--  End Search  -->
+	{{ /if }}
 </template>

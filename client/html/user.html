@@ -1,0 +1,31 @@
+<template name="User">
+		<li class="user black {{selected}}" id="user-link">
+		{{#if selected}}
+			<span class="name"><a href="post/{{_id}}">{{ postName }}</a></span>
+		{{else}}
+			<span class="name">{{ postName }}</span>
+		{{/if}}
+
+		{{#if selected}}
+		<div class="jokeInfo">
+			<div>
+				<span class="posy blue">{{ bookAuthor }}
+				{{ this._id }}</span>
+			</div>
+				<br>
+			<div>
+				<span class="posy blue">{{ bookTitle }}</span>
+			</div>
+				<br>
+			<div>
+				<span class="author">Author: {{ author }}</span>
+			</div>
+				<br>
+			<div>
+				<span class="vote-score red">Likes: {{ loveScore }}</span>
+			</div>
+				<br>
+		</div>
+		{{/if}}
+	</li>	
+</template>
