@@ -9,7 +9,7 @@
 		              	" {{ postPost }} "      
             			</p>
 	                </div>
-	            </div>
+	        	</div>
 	        </div>
 	       	<div class="container">
    				<small><p class="meta">Author: {{ author }} ~ 
@@ -28,6 +28,19 @@
 	                    <img src="like.png" class="smiley" id="love">
 	                </div>
     		</div>
-   		 </div>
+   		</div>
+
+   		<div class="container">
+    			<div class="container">
+                	<ul>
+				        {{#each comment}}
+				            <li>{{content}}</li>
+				        {{/each}}
+					</ul>
+                </div>
+                <div class="comment-section">
+				    {{> commentsBox id=_id}}
+				</div>
+		</div>
         <!-- End post -->
 </template>

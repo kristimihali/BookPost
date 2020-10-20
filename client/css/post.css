@@ -1,0 +1,32 @@
+.avatar{
+   display: none;
+}
+
+.text-span {
+	font-size: large;
+	margin: 15px 15px 15px 10px;
+}
+
+.metadata .date{
+	opacity: 0.5;
+	font-size: 9px;
+}
+
+.actions a{
+    text-decoration: none; font: menu;
+    display: inline-block; padding: 2px 8px;
+    background: ButtonFace; color: ButtonText;
+    border-style: solid; border-width: 2px;
+    border-color: ButtonHighlight ButtonShadow ButtonShadow ButtonHighlight;
+}
+
+.content .author{
+	font-size: 15px;
+	color:red; 
+	font-weight: bold;
+
+}
+
+.comments-reply-wrapper{
+	margin: 25px 50px 75px 100px;
+}
