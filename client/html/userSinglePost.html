@@ -1,5 +1,5 @@
 <template name="User">
-		<li class="user black {{selected}}" id="user-link">
+	<li class="user black {{selected}}" id="user-link">
 		{{#if selected}}
 			<span class="name"><a href="post/{{__originalId}}">{{ postName }}</a></span>
 		{{else}}
@@ -7,7 +7,7 @@
 		{{/if}}
 
 		{{#if selected}}
-		<div class="jokeInfo">
+		<div class="postInfo">
 			<div>
 				<span class="posy blue">{{ bookAuthor }}
 				{{ __originalId }}</span>

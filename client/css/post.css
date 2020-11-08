@@ -22,11 +22,15 @@
 
 .content .author{
 	font-size: 15px;
-	color:red; 
+	color:blue; 
 	font-weight: bold;
 
 }
 
 .comments-reply-wrapper{
 	margin: 25px 50px 75px 100px;
+}
+
+.comments-box .ui.comments > .comment .comments{
+    margin-left: 3em;
 }

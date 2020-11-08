@@ -6,10 +6,10 @@
 			<!-- easy search -->
 			Search Page
 			<div class="black searchbar">
-				{{ > EasySearch.Input index=playersIndex attributes=inputAttributes }}
+				{{ > EasySearch.Input index=postsIndex attributes=inputAttributes }}
 			</div>
 
-			{{ #EasySearch.IfInputEmpty index=playersIndex }}
+			{{ #EasySearch.IfInputEmpty index=postsIndex }}
 				<div class="padded examples black"> For example: "Victor Hugo"
 				</div>
 			{{ else }}
@@ -18,43 +18,36 @@
 				{{ /if }}
 			{{ /EasySearch.IfInputEmpty }}
 
-			{{ #EasySearch.IfSearching index=playersIndex }}
+			{{ #EasySearch.IfSearching index=postsIndex }}
 				<div>Searching...</div>
 			{{ /EasySearch.IfSearching }}
 
 			<ol class="leaderboard">
-				{{ #EasySearch.Each index=playersIndex }}
-					{{ > User }}
+				{{ #EasySearch.Each index=postsIndex }}
+					{{ > User }} <!-- Template found in userSinglePost.html -->
 				{{ /EasySearch.Each }}
 			</ol>
 
-			{{ #EasySearch.IfNoResults index=playersIndex }}
-				<div class="padded no-results black">No results found</div>
-			{{else}}
-			{{ /EasySearch.IfNoResults }}
+			{{#EasySearch.IfNoResults index=postsIndex}}
+				<div class="no-results">No results found!</div>
+			{{/EasySearch.IfNoResults}}
 
 
-			{{ > EasySearch.Pagination index=playersIndex maxPages=10 }}
-			{{ ! > EasySearch.LoadMore index=playersIndex }}
+			{{ > EasySearch.Pagination index=postsIndex maxPages=10 }}
+			{{ ! > EasySearch.LoadMore index=postsIndex }}
 
 			{{ #if showMore }}
 				{{> EasySearch.Input name="mini-index" index=index attributes=inputAttributes }}
 				<ul>
-					{{#EasySearch.Each name="mini-index" index=playersIndex}}
-						<li>{{postName}}</li>
-					{{/EasySearch.Each}}
+					{{ #EasySearch.Each name="mini-index" index=postsIndex }}
+						<li>{{ postName }}</li>
+					{{ /EasySearch.Each }}
 				</ul>
 			{{ /if }}
 
 			<!-- end easy search -->
 
-			<!-- {{> EasySearch.Input index=playersIndex }} -->
-
-<!--     <ul>
-        {{#EasySearch.Each index=playersIndex }}
-            <li>Name of the player: {{postName}}{{_id}}</li>
-        {{/EasySearch.Each}}
-    </ul> -->
+			<!-- {{> EasySearch.Input index=postsIndex }} -->
 
 		</div>
 		<!--  End Search  -->

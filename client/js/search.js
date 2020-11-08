@@ -8,34 +8,34 @@ Template.search.rendered = function(){
 }
 
 Template.search.helpers({
-	// inputAttributes: function(){
-	// 	return { 'class': 'easy-search-input', 'placeholder': 'Start Searching'};
-	// },
+	inputAttributes: function(){
+		return { 'class': 'easy-search-input', 'placeholder': 'Start Searching'};
+	},
 
-	// players: function () {
-	// 	return Posts.find({}, { sort: { createdAt: -1 }});
-	// },
+	players: function () {
+		return Posts.find({}, { sort: { createdAt: -1 }});
+	},
 
-	// selectedName: function(){
-	// 	var post = PostsIndex.config.MongoCollection.findOne({ __originalId: Session.get("selectedPost") });
-	// 	return post && post.postName;
-	// },
+	selectedName: function(){
+		var post = PostsIndex.config.MongoCollection.findOne({ __originalId: Session.get("selectedPost") });
+		return post && post.postName;
+	},
 
-	// index: function(){
-	// 	return PostsIndex;
-	// },
+	index: function(){
+		return PostsIndex;
+	},
 
-	// resultsCount: function() {
-	// 	// body...
-	// 	return PostsIndex.getComponentDict().get('count');
-	// },
+	resultsCount: function() {
+		// body...
+		return PostsIndex.getComponentDict().get('count');
+	},
 
-	// showMore: function(){
-	// 	return false;
-	// },
+	showMore: function(){
+		return false;
+	},
 
-	// renderTmpl: () => Template.renderTemplate,
-	playersIndex: () => PostsIndex,
+	renderTmpl: () => Template.renderTemplate,
+	postsIndex: () => PostsIndex,
 
 });
 
