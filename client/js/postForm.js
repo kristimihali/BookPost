@@ -18,6 +18,7 @@ Template.postForm.events({
 			event.target.bookAuthor.value = "";
 			event.target.bookTitle.value = "";
 
+			$('#exampleModal').modal('hide')
 			Bert.alert("Your opinion was posted!", "success", "growl-top-right");
 		}else{
 			Bert.alert("Type something on each field!", "danger", "growl-top-right");
