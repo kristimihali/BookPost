@@ -23,7 +23,7 @@ Template.postForm.events({
 		}else{
 			Bert.alert("Type something on each field!", "danger", "growl-top-right");
 		}
-		return false; //prevent submit 
+		return false; //prevent submit
 	}
 });
 

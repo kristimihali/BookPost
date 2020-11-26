@@ -8,7 +8,8 @@
 					<i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
 					<br>
 					<br>
-					<h2 class="text-black mb-5">Share an opinion over a recent book you've read!</h2>
+					<br>
+
 					{{#if currentUser}}
 						<!-- <form class="post-post">
 							<div class="form-label-group">
@@ -16,7 +17,7 @@
 							  <label for="postName" class="sr-only">Post Title</label>
 							  <input type="text" name="postName" id="postName" class="form-control" placeholder="Post Title" maxlength="40">
 							</div>
-			
+
 							<div class="form-label-group">
 							  <h6>Book Author</h6>
 							  <label for="bookAuthor" class="sr-only">Book Author</label>
@@ -37,64 +38,64 @@
 
 							<button type="submit" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Post</button>
 						</form> -->
-						
+
 						<!-- Button trigger modal -->
-						<button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
+						<button id="btn_post" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#exampleModal">
 							Post
 						</button>
-						
+
 						<!-- Modal -->
 						<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 							<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">You read a book, share your opinion !</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<form class="post-post">
+											<div class="form-label-group">
+										  	<h6>Post Title</h6>
+										  	<label for="postName" class="sr-only">Post Title</label>
+										  	<input type="text" name="postName" id="postName" class="form-control" placeholder="Post Title" maxlength="40">
+											</div>
+
+											<div class="form-label-group">
+												<h6>Book Author</h6>
+												<label for="bookAuthor" class="sr-only">Book Author</label>
+												<input type="text" name="bookAuthor" id="bookAuthor" class="form-control" placeholder="Book Author" maxlength="40">
+											</div>
+
+											<div class="form-label-group">
+												<h6>Book Title</h6>
+												<label for="bookTitle" class="sr-only">Book Title</label>
+												<input type="text" name="bookTitle" id="bookTitle" class="form-control" placeholder="Book Title" maxlength="40">
+											</div>
+
+											<div class="form-label-group">
+												<h6>Your Opinion</h6>
+												<label for="postPost" class="sr-only">Post</label>
+												<textarea rows = "10" cols="25" type="text" name="postPost" id="postPost" class="form-control" placeholder="Express yourself!" maxlength="140"></textarea>
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+												<button type="submit" class="btn btn-primary font-weight-bold mb-2" id="postButton">Post</button>
+											</div>
+										</form>
+									</div>
 								</div>
-								<div class="modal-body">
-									<form class="post-post">
-										<div class="form-label-group">
-										  <h6>Post Title</h6>
-										  <label for="postName" class="sr-only">Post Title</label>
-										  <input type="text" name="postName" id="postName" class="form-control" placeholder="Post Title" maxlength="40">
-										</div>
-						
-										<div class="form-label-group">
-											<h6>Book Author</h6>
-											<label for="bookAuthor" class="sr-only">Book Author</label>
-											<input type="text" name="bookAuthor" id="bookAuthor" class="form-control" placeholder="Book Author" maxlength="40">
-										</div>
-			
-										<div class="form-label-group">
-											<h6>Book Title</h6>
-											<label for="bookTitle" class="sr-only">Book Title</label>
-											<input type="text" name="bookTitle" id="bookTitle" class="form-control" placeholder="Book Title" maxlength="40">
-										</div>
-			
-										<div class="form-label-group">
-											<h6>Your Opinion</h6>
-											<label for="postPost" class="sr-only">Post</label>
-											<textarea rows = "10" cols="25" type="text" name="postPost" id="postPost" class="form-control" placeholder="Express yourself!" maxlength="140"></textarea>
-										</div>
-										<div class="modal-footer">
-											<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-											<button type="submit" class="btn btn-primary font-weight-bold mb-2" id="postButton">Post</button>
-										</div>
-									</form> 
-								</div>
-							</div>
 							</div>
 						</div>
 						<br>
 						<br>
-					    {{else}}
-							<form>
-								<h2 class="form-signin-heading">Login to Post or Comment an opinion. </h2>
-								<a href="/" class="btn btn-md btn-primary" id="login-redir">Login</a>
-							</form>
-					    {{/if}}
+					{{else}}
+						<form>
+							<h2 class="form-signin-heading">Login to Post or Comment an opinion. </h2>
+							<a href="/" class="btn btn-md btn-primary" id="login-redir">Login</a>
+						</form>
+					{{/if}}
 				</div>
 			</div>
 		</div>
