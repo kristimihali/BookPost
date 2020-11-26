@@ -331,6 +331,14 @@ button::-moz-focus-inner,
   border-radius: 30px;
 }
 
+#score button {
+  border: none;
+  background-color: inherit;
+  font-size: 25px;
+  display: inline-block;
+  text-decoration: none;
+}
+
 input[type=radio],
 input[type=checkbox] {
   box-sizing: border-box;
@@ -4418,7 +4426,7 @@ input[type=button].btn-block {
 }
 
 .navbar-light .navbar-brand {
-  color: white;
+  color: rgba(0, 0, 0, 0.9);
 }
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: rgba(0, 0, 0, 0.9);

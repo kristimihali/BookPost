@@ -1,37 +1,26 @@
 <template name="rankings">
-	
+
 	<center>
 		{{#if currentUser}}
 		<!-- Display Posts with the highest likes -->
 			{{ #each posts }}
-			<!-- Post--> 
-			<div class="jumbotron" style="width: 46rem;">
+			<!-- Post-->
+			<div class="container post" style="width: 46rem;">
 				<div class="container">
-					<div class="row">
-						<div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
-							<h3 class="display-4"><a href="/post/{{_id}}">Post Title: {{ postName }}</a></h3>
-							<p class="lead">
-							" {{ postPost }} "      
-							</p>
-						</div>
+					<div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
+						<h5><i class="fas fa-user-circle"></i> {{ author }} - <time>{{ date }}</time></h5>
+						<h4 class="display-4"><a href="/post/{{_id}}">Post Title: {{ postName }}</a></h4>
+						<p class="lead">" {{ postPost }} "</p>
+						<br>
+						<p class="meta"><strong>Book Author :</strong> {{ bookAuthor }}  <strong>Book Title :</strong> {{ bookTitle }}</p>
 					</div>
 				</div>
 				<div class="container">
-					<small><p class="meta">Author: {{ author }} ~ 
-						<time>Posted: {{ date }}</time></p>
-					</small>
-					<p class="meta">Book Author: {{ bookAuthor }} ~ Book Title: {{ bookTitle }}</p>
-				</div>
-				
-				<div class="container">
-						<hr class="my-4">
-						<br>
-						<div class="row" id="score">
-							<h3 class="count red block">{{ loveScore }}</h3>
-						</div>
-						<div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
-							<img src="like.png" class="smiley" id="love">
-						</div>
+					<hr class="my-4">
+					<div class="row" id="score">
+						<button class="col-lg-2"><i id="love" class="far fa-heart"></i> {{ loveScore }}</button>
+						<button class="col-lg-2"><i id="comment" class="far fa-comment"></i></button>
+					</div>
 				</div>
 
 			</div>

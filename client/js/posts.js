@@ -35,6 +35,10 @@ Template.posts.events({
 
 		if(name == thisPostsVotes){
 			Bert.alert("You cannot vote for your own post.", "danger", "growl-top-right");
-		}	
+		}
 	},
+
+	"click #comment": function(){
+		console.log(comment);
+	}
 });
