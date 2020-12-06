@@ -11,7 +11,7 @@ Template.signup.events({
 		var email = trimInput(event.target.email.value);
 		var password = trimInput(event.target.password.value);
 		var password2 = trimInput(event.target.password2.value);
-		var profileImage = trimInput("neutral.png");
+		var profileImage = trimInput("/profile_image.png");
 
 		if(isNotEmpty(email) && isNotEmpty(username) && isEmail(email) && areValidPasswords(password, password2)){
 			//do stuff
@@ -21,6 +21,10 @@ Template.signup.events({
 				password: password,
 				profile: {
 					profileImage: profileImage,
+					friends: [],
+					nbFriends: 0,
+					followers: [],
+					nbFollowers: 0,
 					loveScore: 0,
 					voted:[],
 				}
@@ -82,10 +86,8 @@ areValidPasswords = function(password, confirm){
 		return false;
 	}
 	if(password !== confirm){
-		Bert.alert("Passwrds do not match!", "danger", "growl-top-right");
+		Bert.alert("Passwords do not match!", "danger", "growl-top-right");
 		return false;
 	}
 	return true;
 }
-
-

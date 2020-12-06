@@ -1,130 +1,139 @@
 <template name="profile">
-	<!-- {{#if currentUser}} -->
-		<!-- This is where the user Profile starts. -->
-		<!-- <div id="profile-wrap">
-			<center>
-				<img src="bill.jpg" class="profile-img">
-				<h1 class="username">{{ username }}</h1>
-				<h3>{{ email }}</h3>
-				<div class="" id="">
-					<img src="love.png" class="profile-smiley" id='love'>
-					<img src="neutral.png" class="profile-smiley" id='neutral'>
-					<img src="sad.png" class="profile-smiley" id='sad'>
-				</div>
-				<div class="score" id="">
-					<h3 class="count red block">{{ userLoveScore }}</h3>
-					<h3 class="count yellow block">{{ userNeutralScore }}</h3>
-					<h3 class="count green block">{{ userSadScore }}</h3>
-
-				</div>
-			</center>
-		</div> -->
-		<!-- This is where the user Profile ends. -->
-		<!-- {{ #each userPosts }} -->
-		<!-- joke! -->
-			<!-- <div class="post">
+	<div class="container-fluid profile">
+		<div class="row">
+			<div class="col-6 profile-infos">
 				<div class="row">
-					<div class=".col-sm-6 .col-md-5 .col-lg-6" id="info">
-						<h1 class ="post-title">{{ postName }}</h1>	
-						<p class="meta">Author: {{ author }}</p>
-						<p class="meta">Posted on: {{ date }}</p>
-					</div>
-					<div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
-						<img src="love.png" class="smiley" id="love">
-					</div>
-					<div class="row" id="score">
-						<h3 class="count red block">{{ loveScore }}</h3>
-					</div>
-				</div>
-				<p class="regular post-desc">{{ postPost }}</p>
-				<button class="btn btn-sml btn-danger" id="delete-post">Delete Post</button>
-			</div> -->
-		<!-- End joke! -->
-	<!-- {{ else }} -->
-		<!-- <h2>No jokes to display</h2> -->
-	<!-- {{ /each }} -->
-<!-- {{/if}} -->
-<br>
-{{ #if currentUser }}
-<div class="jumbotron">
-	<div class="container">
-	    <div class="row profile">
-			<div class="col-md-3">
-				<div class="profile-sidebar">
-					<!-- SIDEBAR USERPIC -->
-					<center>
-					<div class="profile-userpic">
-						<img src="{{ profileImage }}" class="img-responsive" alt="">
-					</div>
-					</center>
-					<!-- END SIDEBAR USERPIC -->
-					<!-- SIDEBAR USER TITLE -->
-					<div class="profile-usertitle">
-						<div class="profile-usertitle-name">
-							{{ username }}
-						</div>
-						<div class="profile-usertitle-job">
-							{{ email }}
-						</div>
-						<div class="profile-usertitle-job">
-							<span><i class="fas fa-thumbs-up"></i></span>{{ userLoveScore }}
-						</div>
-					</div>
-					<!-- END SIDEBAR USER TITLE -->
-					<!-- SIDEBAR BUTTONS -->
-					<div class="profile-userbuttons">
-						<button type="button" class="btn btn-success btn-sm"> Button1 </button>
-						<button type="button" class="btn btn-danger btn-sm"> Button2 </button>
-					</div>
-					<!-- END SIDEBAR BUTTONS -->				
-				</div>
-			</div>
-			<div class="col-md-9">
-	            <div class="profile-content">
-				    {{ #each userPosts }}
-				        <!-- Post--> 
-				    	<div class="jumbotron">
-				    		<div class="container">
-					            <div class="row">
-					                <div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
-					                    <h1 class="display-4">Post Title: {{ postName }}</h1>
-					                    <p class="lead">
-						              " {{ postPost }} "      
-				            			</p>
-					                </div>
-					            </div>
-					        </div>
-					       	<div class="container">
-				   				<small><p class="meta">Author: {{ author }} ~ 
-				   					<time>Posted: {{ date }}</time></p>
-				   				</small>
-				                <p class="meta">Book Author: {{ bookAuthor }} ~ Book Title: {{ bookTitle }}</p>
-					       	</div>
-					        
-						    <div class="container">
-					                <hr class="my-4">
-					                <br>
-					                <div class="row" id="score">
-					                    <h3 class="count red block">{{ loveScore }}</h3>
-					                </div>
-					                <div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
-					                    <img src="like.png" class="smiley-profile" id="love">
-					                </div>
-					                <br>
-					                <a class="btn btn-primary btn-lg" href="#" role="button" id="delete-post">Delete Post</a>
 
-				    		</div>
-				   		 </div>
-				        <!-- End post -->
-				        {{ else }}
-				    		<h2>No Posts to display.</h2>
-				    	{{ /each }}
-	            </div>
+					<div class="col-3 profile-img">
+						<img src="{{image}}" class="rounded-circle">
+					</div>
+
+					<div class="col-3 profile-identity">
+						<div class="profile-name">
+							<h2>{{ username }}</h2>
+						</div>
+						{{#if authorised}}
+							<div class="profile-email">
+								<h5>{{ email }}</h5>
+							</div>
+						{{/if}}
+						<div class="profile-stats">
+							<span>
+								<i class="fa fa-heart" title="Love score"></i> {{ userLoveScore }} |
+								<i class="fa fa-users" title="Subscription number"></i> {{ nbSubscriptions }} |
+								<i class="fa fa-eye" title="Number of reader"></i> {{ nbReaders }}
+							</span>
+
+						</div>
+					</div>
+
+					{{#if authorised}}
+						<div class="col-6 profile-btn">
+							<button id="btn_edit" type="button" class="btn btn-primary"
+										  data-toggle="modal" data-target="#editProfileModal">
+								EDIT <i class="fas fa-pen"></i>
+							</button>
+						</div>
+					{{else}}
+						{{#if issuscribe}}
+						<div class="col-6 profile-btn">
+							<button id="btn_unsuscribe" type="button" class="btn btn-warning">
+								UNSUSCRIBE <i class="fa fa-user-times"></i>
+							</button>
+						</div>
+						{{else}}
+						<div class="col-6 profile-btn">
+							<button id="btn_suscribe" type="button" class="btn btn-primary">
+								SUSCRIBE <i class="fas fa-user-plus"></i>
+							</button>
+						</div>
+						{{/if}}
+					{{/if}}
+				</div>
+
+				<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog"
+						 aria-labelledby="exampleModalLabel" aria-hidden="true">
+					{{ > profileForm }}
+				</div>
+
+				<hr>
+
+				<div class="row profile-others">
+					<div class="col-5 profile-subscriptions">
+						<h4>My Subscriptions</h4>
+						<br>
+						{{#each subscriptions}}
+							<div class="subscription row col-12">
+								<h5 class="col-9">
+									<a href="/profile/{{_id}}">
+										<img src="{{profile.profileImage}}" class="rounded-circle">
+										{{username}}
+									</a>
+								</h5>
+								<button id="btn_rm" type="button" class="btn btn-danger">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+						{{else}}
+							<div class="col-12">
+								<h5>You have no subscriptions yet</h5>
+							</div>
+						{{/each}}
+					</div>
+
+					<div class="col-5 profile-readers">
+						<h4 class="col-6">My Readers</h4>
+						<br>
+						{{#each readers}}
+							<div class="reader row col-12">
+								<h5 class="col-9">
+									<a href="/profile/{{_id}}">
+										<img src="{{profile.profileImage}}" class="rounded-circle">
+										{{username}}
+									</a>
+								</h5>
+								<button id="btn_rm" type="button" class="btn btn-danger">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+						{{else}}
+							<div class="col-12">
+								<h5>You have no readers yet</h5>
+							</div>
+						{{/each}}
+					</div>
+				</div>
+
 			</div>
+
+			<div class="col-6 profile-posts">
+				<div class="row">
+					<h3 class="col-9">Posts</h3>
+					{{#if authorised}}
+						<button id="btn_postProfile" type="button" class="btn btn-primary col-2"
+									  data-toggle="modal" data-target="#newPostModal">
+							ADD POST <i class="fa fa-plus-circle" style="font-size: 20px"></i>
+						</button>
+						<div class="col-1"></div>
+					{{/if}}
+				</div>
+
+				<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog"
+						 aria-labelledby="exampleModalLabel" aria-hidden="true">
+					{{ > postForm }}
+				</div>
+
+				<div class="profile-content">
+					{{ #each userPosts }}
+				    <!-- Post-->
+						{{> post}}
+			    	<!-- End post -->
+			  	{{ else }}
+			  		<h4 class="text-center">No Posts to display.</h4>
+			  	{{ /each }}
+				</div>
+	  	</div>
+
 		</div>
 	</div>
-</div>
-{{ /if }}
 </template>
-
-

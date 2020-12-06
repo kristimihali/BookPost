@@ -1,0 +1,40 @@
+#chatWindow{
+  position: fixed;
+  right: 5px;
+  bottom: 0px;
+  width: 30rem;
+  margin-right: 1%;
+  //margin-bottom: 5%;
+  overflow-x: scroll;
+  border-radius: 15px;
+  background-color: #D3D3D3;
+}
+
+.messages{
+  max-height: 700px;
+  overflow: auto;
+}
+
+.messagesFriend{
+  text-align: left;
+  margin: 1%;
+  margin-bottom: 2%;
+  width: 22rem;
+}
+.messagesUser{
+  text-align: right;
+  margin: 1%;
+  margin-bottom: 2%;
+  width: 22rem;
+}
+
+.messageFriend{
+  background-color: #b37700;
+  border-radius: 30px;
+  padding-top: 1%;
+}
+.messageUser{
+  background-color: #339966;
+  border-radius: 30px;
+  padding-top: 1%;
+}

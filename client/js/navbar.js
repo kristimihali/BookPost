@@ -4,6 +4,21 @@ import { Template } from 'meteor/templating';
 Template.navbar.rendered = function () {
 	// body...
 }
+Template.navbar.helpers({
+	inputAttributes: function(){
+		return { 'class': 'easy-search-input form-control', 'placeholder': 'Start Searching'};
+	},
+
+	resultsCount: function() {
+		return PostsIndex.getComponentDict().get('count');
+	},
+
+	postsIndex: () => PostsIndex,
+
+	myId: function(){
+		return Meteor.userId();
+	}
+});
 
 Template.navbar.events({
 	"click .logout": function(event){
@@ -16,4 +31,6 @@ Template.navbar.events({
 			}
 		});
 	},
+
+	
 });

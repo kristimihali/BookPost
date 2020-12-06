@@ -1,0 +1,125 @@
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body {
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #292d31;
+  text-align: left;
+  padding-top: 3%;
+  background-color: #3e3f42;
+  //background-image: url('lettreswhite.png');
+}
+
+.navbar {
+  background-color: #305050;
+  color: white;
+}
+
+.masthead {
+  position: relative;
+  width: 100%;
+  height: auto;
+  min-height: 35rem;
+  padding: 15rem 0;
+  background: url("home_background.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+a {
+  color: #336699;
+}
+
+.masthead h1 {
+  font-weight: bold;
+  color: #3AA8D8;
+}
+.masthead h2 {
+  color: #3AA8D8;
+}
+@media (min-width: 768px) {
+  .masthead h1 {
+    font-size: 4rem;
+    line-height: 4rem;
+  }
+}
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+    padding: 0;
+  }
+  .masthead h1 {
+    font-size: 6.5rem;
+    line-height: 6.5rem;
+    letter-spacing: 0.6rem;
+  }
+  .masthead h2 {
+    max-width: 30rem;
+    font-size: 1.25rem;
+  }
+}
+
+.posts {
+  padding: 0.5%;
+  width: 46rem;
+  //border: 2px solid #4d9999;
+}
+.no-posts {
+  text-align: center;
+  background-color: #4d9999;
+  color: black;
+  font-weight: bold;
+  padding: 0.5%;
+  width: 46rem;
+}
+
+
+/* CSS button */
+#btn-login {
+  background-color: #64a19d;
+}
+#btn-login:hover {
+  color: #fff;
+  background-color: #548b87;
+}
+#btn-signup,
+#btn-login {
+  padding: 1.25rem 2rem;
+  font-size: 80%;
+  letter-spacing: 0.15rem;
+  border: 0;
+}
+
+#btn_post {
+  position: fixed;
+  bottom: 10px;
+  left: 30px;
+}
+#btn_chat {
+  position: fixed;
+  bottom: 10px;
+  right: 30px;
+}
+#btn_post,
+#btn_chat {
+  width: 10%;
+  margin-top: 2%;
+  margin-bottom: 1%;
+  padding: 1%;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 30px;
+  background-color: #336699;
+  border: inherit;
+}
+#btn_post:hover,
+#btn_post:active,
+#btn_chat:hover,
+#btn_chat:active {
+  color: black;
+  border: inherit;
+}

@@ -1,109 +1,161 @@
-/***
-User Profile Sidebar by @keenthemes
-A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
-Licensed under MIT
-***/
-
-/* Profile container */
-.profile {
-  margin: 20px 0;
+.profile{
+  height: 100%;
 }
 
 /* Profile sidebar */
-.profile-sidebar {
-  padding: 20px 0 10px 0;
-  background: #fff;
+.profile-infos {
+  padding: 2%;
 }
 
-.profile-userpic img {
-  float: none;
-  margin: 0 auto;
-  width: 50%;
-  height: 50%;
-  -webkit-border-radius: 50% !important;
-  -moz-border-radius: 50% !important;
-  border-radius: 50% !important;
+.profile-img img {
+  margin: 1%;
+  width: 12rem;
+  height: 12rem;
+  border: 2px solid black;
 }
 
-.profile-usertitle {
-  text-align: center;
+.profile-identity {
   margin-top: 20px;
 }
 
-.profile-usertitle-name {
-  color: #5a7391;
-  font-size: 16px;
-  font-weight: 600;
-  margin-bottom: 7px;
+.profile-name h2{
+  color: white;
+  font-weight: bold;
 }
 
-.profile-usertitle-job {
-  text-transform: uppercase;
-  color: #5b9bd1;
-  font-size: 12px;
-  font-weight: 600;
+.profile-email h5{
+  color: #2d6c9f;
+  font-style: italic;
   margin-bottom: 15px;
 }
 
-.profile-userbuttons {
-  text-align: center;
-  margin-top: 10px;
+.profile-stats {
+  color: #202020;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-.profile-userbuttons .btn {
-  text-transform: uppercase;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 6px 15px;
-  margin-right: 5px;
+.profile-btn {
+  margin-top: 5%;
 }
 
-.profile-userbuttons .btn:last-child {
-  margin-right: 0px;
-}
-    
-.profile-usermenu {
-  margin-top: 30px;
-}
-
-.profile-usermenu ul li {
-  border-bottom: 1px solid #f0f4f7;
+#btn_edit {
+  padding: 1.25rem 2rem;
+  background-color: #64a19d;
+  font-size: 80%;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  border: 0;
 }
 
-.profile-usermenu ul li:last-child {
-  border-bottom: none;
+#btn_delfriend{
+  padding: 1.25rem 2rem;
+  font-size: 80%;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  border: 0;
 }
 
-.profile-usermenu ul li a {
-  color: #93a3b5;
-  font-size: 14px;
-  font-weight: 400;
+#btn_postProfile {
+  padding: 1.25rem;
+  background-color: #336699;
+  font-size: 80%;
+  font-weight: bold;
+  letter-spacing: 0.15rem;
+  border: 0;
 }
 
-.profile-usermenu ul li a i {
-  margin-right: 8px;
-  font-size: 14px;
+#btn_edit:hover,
+#btn_edit:active{
+  background-color: #64a19d;
+  color: black;
+  border: inherit;
+}
+#btn_postProfile:hover,
+#btn_postProfile:active {
+  /*border: 1px solid black;*/
+  color: black;
+  border: inherit;
 }
 
-.profile-usermenu ul li a:hover {
-  background-color: #fafcfd;
-  color: #5b9bd1;
+.profile-others{
+  margin-top: 5%;
+  padding: 0.5%;
+  /*background-color: #dcdcbc;*/
+  height: 100%;
+}
+.profile-others h4{
+  color: black;
 }
 
-.profile-usermenu ul li.active {
-  border-bottom: none;
+.profile-subscriptions{
+  border-right: 1px solid black;
 }
 
-.profile-usermenu ul li.active a {
-  color: #5b9bd1;
-  background-color: #f6f9fb;
-  border-left: 2px solid #5b9bd1;
-  margin-left: -2px;
+.profile-subscriptions,
+.profile-readers {
+  margin-left: 1%;
+  min-height: 80%;
+}
+.subscription{
+  padding-top: 2%;
+  padding-bottom: 0.5%;
+  border-radius: 100px;
+  background-color: #4682B4;
+  margin-bottom: 2%;
+}
+.subscription a{
+  color: black;
+}
+.subscription img{
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+}
+
+.reader{
+  padding-top: 2%;
+  padding-bottom: 0.5%;
+  border-radius: 100px;
+  background-color: #2E8B57;
+  margin-bottom: 2%;
+}
+.reader a{
+  color: black;
+}
+.reader img{
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+}
+
+#btn_rm{
+  position: relative;
+  top: 15px;
+  left: 50px;
+  height: 50%;
+  background-color: inherit;
+  border: none;
+}
+#btn_rm:hover{
+  background-color: #dc3545;
 }
 
 /* Profile Content */
+.profile-posts{
+  margin-top: 5%;
+  height: 100%;
+}
+.profile-posts h3{
+  color: black;
+}
+
 .profile-content {
-  padding: 20px;
-  background: #fff;
-  min-height: 460px;
+  background-color: #fff;
+  margin-right: 2%;
+  margin-top: 2%;
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+  border-radius: 10px;
+  min-height: 30rem;
 }

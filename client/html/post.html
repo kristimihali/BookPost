@@ -1,46 +1,59 @@
-<template name="postOpinion">
-	<!-- Post-->
-    	<div class="jumbotron">
-    		<div class="container">
-	            <div class="row">
-	                <div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
-	                    <h3 class="display-4">Post Title: {{ postName }}</h3>
-	                    <p class="lead">
-		              	" {{ postPost }} "
-            			</p>
-	                </div>
-	        	</div>
-	        </div>
-	       	<div class="container">
-   				<small><p class="meta">Author: {{ author }} ~
-   					<time>Posted: {{ date }}</time></p>
-   				</small>
-                <p class="meta">Book Author: {{ bookAuthor }} ~ Book Title: {{ bookTitle }}</p>
-	       	</div>
+<template name="post">
+  <div class="container">
+    <div class="post">
+      <div class="postHead row col-12">
+        <h5 class="col-11">
+          <a href="/profile/{{userId}}">
+            <img class="rounded-circle" src="{{author.profile.profileImage}}"/>
+            {{ author.username }}
+          </a>
+           - <time>{{ date }}</time>
+        </h5>
+        {{#if myPost}}
+        <button id="delete-post" type="button" class="btn btn-danger col-1">
+          <i class="fa fa-trash"></i>
+        </button>
+        {{/if}}
+      </div>
 
-		    <div class="container">
-	                <hr class="my-4">
-	                <br>
-	                <div class="row" id="score">
-	                    <h3 class="count red block">{{ loveScore }}</h3>
-	                </div>
-	                <div class=".col-sm-6 .col-md-5 .col-md-offset-2 .col-lg-6 .col-lg-offset-0" id="vote">
-	                    <img src="like.png" class="smiley" id="love">
-	                </div>
-    		</div>
-   		</div>
+      <div class="container postInfo">
+        <hr>
+        <div>
+          <h2>{{ postName }}</h2>
+          <p class="contentPost">" {{ postContent }} "</p>
+          <p><strong>Book Author :</strong> {{ bookAuthor }}  |  <strong>Book Title :</strong> {{ bookTitle }}</p>
 
-   		<div class="container">
-    			<div class="container">
-                	<ul>
-				        {{#each comment}}
-				            <li>{{content}}</li>
-				        {{/each}}
-					</ul>
-                </div>
-                <div class="comment-section">
-				    {{> commentsBox id=_id}}
-				</div>
-		</div>
-        <!-- End post -->
+          <hr class="my-4">
+          <div id="score" class="row">
+            <button id="love" class="col-2">
+              <i class="far fa-heart"></i> {{ loveScore }}
+            </button>
+            <button class="col-2">
+              <i class="far fa-comments"></i> {{ nbComments }}
+            </button>
+            <div class="input-group col-8">
+              <input id="msgComment" class="form-control" type="text" placeholder="Add your comment here">
+              <div class="input-group-append">
+                <span id="sendComment" class="input-group-text"><i class="far fa-comment" style="font-size: 20px"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4">
+        <h5 id="comment"><a href="#">Show comments</a></h5>
+
+        {{#if showComments}}
+          <div class="container">
+            <div class="comment-section">
+              {{#each comments}}
+                {{ > comment}}
+              {{else}}
+                <p>No comments for this post</p>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </template>

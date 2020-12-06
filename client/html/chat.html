@@ -1,0 +1,62 @@
+<template name="chat">
+  <h1>Chatapp</h1>
+  <p>
+    Welcome to the example chat app!
+  </p>
+  {{> inputChat }}
+  {{> messagesChat }}
+</template>
+
+
+<template name="messagesChat">
+  {{#each messages}}
+    <strong>{{name}}:</strong> {{message}}<br>
+  {{/each}}
+</template>
+
+<template name="inputChat">
+  <p>Message: <input type="text" id="message"></p>
+</template>
+
+
+<template name="msgFriend">
+  <div class="messagesFriend container">
+    <div class="row">
+      <div class="col-md-6">
+        <h5>Username</h5>
+      </div>
+      <div class="col-md-6">
+        <time>02/12/2020 10:20am</time>
+      </div>
+    </div>
+    <div class="messageFriend row">
+      <div class="img col-md-2">
+        <img src="profile_image.png" class="rounded-circle" width="25px;">
+      </div>
+      <div class="col-md-10">
+        <p>Salut, ça va ?</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="msgUser">
+  <div class="messagesUser container">
+    <div class="row">
+      <div class="col-md-6">
+        <time>02/12/2020 10:20am</time>
+      </div>
+      <div class="col-md-6">
+        <h5>Username</h5>
+      </div>
+    </div>
+    <div class="messageUser row">
+      <div class="col-md-10">
+        <p>Super et toi ?</p>
+      </div>
+      <div class="img col-md-2">
+        <img src="profile_image.png" class="rounded-circle" width="25px;">
+      </div>
+    </div>
+  </div>
+</template>

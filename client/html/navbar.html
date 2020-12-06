@@ -1,26 +1,58 @@
 <template name="navbar">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
         <div class="container-fluid">
-            <a class="navbar-brand js-scroll-trigger" href="/">Book Post</a>
+            <a class="navbar-brand" href="/">Book Post</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+              <ul class="navbar-nav ml-auto">
+                {{#if currentUser}}
 
-                    {{#if currentUser}}
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/search" id="search-link"><i class = "fa fa-search" style="font-size: 20px"></i> Search</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/rankings" id="rankings-link"><i class="fa fa-book" style="font-size: 20px"></i> Rankings Posts</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/profile" id='profile-link'><i class="fas fa-user-circle" style="font-size: 20px"></i> My Account</a></li>
+                <li class="nav-item">
+                  {{ #EasySearch.IfInputEmpty index=postsIndex }}
+                  {{else}}
+                  	{{ #if resultsCount }}
+              				<div class="count-results">
+                        <span>{{resultsCount}} results found </span>
+                      </div>
+              			{{ /if }}
+                  {{ /EasySearch.IfInputEmpty }}
+               </li>
 
-                        <li><a class="nav-link js-scroll-trigger logout" href="#" id="logout-link"><i class="fas fa-sign-out-alt" style="font-size: 20px"></i> Log out</a></li>
-                    {{else}}
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login" id="login-link">Login</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signup" id="login-link">Sign Up</a></li>
-                    {{/if}}
-                </ul>
+                <li class="nav-item">
+                  <div class="input-group">
+                    {{ > EasySearch.Input index=postsIndex attributes=inputAttributes }}
+                    <div class="input-group-append">
+                      <span class="input-group-text"><i class="fa fa-search" style="font-size: 20px"></i></span>
+                    </div>
+                  </div>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/profile/{{myId}}" id='profile-link'>
+                    <i class="fas fa-user-circle" style="font-size: 20px"></i> My Account
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/chat" id='profile-link'>
+                    <i class="fas fa-user-circle" style="font-size: 20px"></i> Chat
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link logout" href="#" id="logout-link">
+                    <i class="fas fa-sign-out-alt" style="font-size: 20px"></i> Log out
+                  </a>
+                </li>
+                {{else}}
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/login" id="login-link">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/signup" id="login-link">Sign Up</a></li>
+                {{/if}}
+              </ul>
             </div>
         </div>
     </nav>

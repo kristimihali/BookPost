@@ -1,123 +1,69 @@
-<template name="posts">
+<template name="home">
     {{ #if currentUser }}
+      <div class="text-center">
+        <button id="btn_post" type="button" class="btn btn-info btn-block"
+                data-toggle="modal" data-target="#exampleModal">
+          ADD POST <i class="fa fa-plus-circle" style="font-size: 20px"></i>
+        </button>
 
-      {{ > postForm }}
-      {{ #each posts }}
-      	<!-- Post-->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {{ > postForm }}
+        </div>
+        <!-- End Modal -->
+      </div>
 
-      	<div class="container post" style="width: 46rem;">
-      		<div class="container">
-      			<div class=".col-s.-6 .col-md-5 .col-lg-6" id="info">
-              <h5><i class="fas fa-user-circle"></i> {{ author }} - <time>{{ date }}</time></h5>
-      				<h4 class="display-4"><a href="/post/{{_id}}">Post Title: {{ postName }}</a></h4>
-      				<p class="lead">" {{ postPost }} "</p>
-              <br>
-              <p class="meta"><strong>Book Author :</strong> {{ bookAuthor }}  <strong>Book Title :</strong> {{ bookTitle }}</p>
-      			</div>
-      	  </div>
-          <div class="container">
-        		<hr class="my-4">
-        		<div class="row" id="score">
-              <button class="col-lg-2"><i id="love" class="far fa-heart"></i> {{ loveScore }}</button>
-              <button class="col-lg-2"><i id="comment" class="far fa-comment"></i></button>
-        		</div>
-        	</div>
-          <div class="container">
-            <hr class="my-4">
-            <div class="container">
-              <div class="comment-section">
-    				    {{> commentsBox id=_id
-                  headerTemplate="testComment"
-                  textareaTemplate="textareaComment"
-                  commentListTemplate="listComment"
-                }}
-    				   </div>
+      <div class="container posts">
+        {{ #EasySearch.Each index=postsIndex }}
+          <!-- Post-->
+          {{> post}}
+          <!-- End post -->
+    	  {{ /EasySearch.Each  }}
+      </div>
+
+      {{#EasySearch.IfNoResults index=postsIndex}}
+        <div class="container no-posts">
+          <div class="no-results">No results found !</div>
+        </div>
+  		{{/EasySearch.IfNoResults}}
+
+
+
+      <div class="chat">
+        {{#if openChat}}
+          <div id="chatWindow">
+            <div class="col-md-12">
+
+              <h1 class="text-center">CHAT</h1>
+              <select class="" name="friends">
+                <option value="default">Choose friend</option>
+                <option value="friend1">friend1</option>
+                <option value="friend2">friend2</option>
+              </select>
+
+              <hr>
+              <div class="messages">
+                {{ > msgFriend }}
+                {{ > msgUser }}
+              </div>
+              <hr>
+
+              <div class="input-group" style="margin-bottom: 25%;">
+                <input class="form-control" type="text" name="message" placeholder="Write your message here">
+                <div class="input-group-append">
+                  <span class="input-group-text"><i class="fa fa-paper-plane" style="font-size: 20px"></i></span>
+                </div>
+              </div>
 
             </div>
-
           </div>
-        </div>
-        <!-- End post -->
-        {{ else }}
-    		<h2>No Posts to display.</h2>
-    	{{ /each }}
+        {{/if}}
+        <button id="btn_chat" type="button" class="btn btn-info btn-block">
+          <i class="far fa-comments" style="font-size: 20px"></i> OPEN CHAT
+        </button>
+      </div>
     {{ else }}
     	{{ > welcome }}
     {{/if}}
-</template>
-
-<template name="testComment">
-  <h1>Commentaires</h1>
-
-</template>
-
-<template name="textareaComment">
-  <form class="{{#if reply}}reply-form{{else}}comment-form{{/if}}" role="form" action="">
-    <div class="form-group">
-      <textarea placeholder="{{ take key='placeholder-textarea' default='Join the discussion'}}"
-                class="form-control {{#if reply}}create-reply{{else}}create-comment{{/if}}" rows="3">
-      </textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">{{ take key=addButtonKey default=defaultAddButtonText }}</button>
-  </form>
-
-</template>
-
-<template name="listComment">
-  {{#each comment}}
-  <div class="media {{#if status}}comment-status-{{status}}{{/if}}">
-    <div class="media-left">
-      <img alt="Avatar of {{user.displayName}}" class="img-thumbnail img-avatar" src="{{avatarUrl}}" />
-    </div>
-    <div class="media-body comment {{#if isOwnComment}}own-comment{{/if}}">
-      <h4 class="media-heading">{{user.displayName}} <small>{{createdAgo}}</small></h4>
-      <div class="content">
-        <div class="comment-content" data-id="{{commentId}}">
-          <p class="text-span">{{{enhancedContent}}}</p>
-        </div>
-
-        <div class="actions btn-group btn-group-xs">
-          {{#if isRating 'likes' 'likes-and-dislikes'}}
-            <div class="btn {{#if hasLiked}}btn-primary{{else}}btn-default{{/if}} like-action" aria-label="Left Align">
-              <small>{{likesCount}}<i class="far fa-thumbs-up"></i></small>
-            </div>
-          {{/if}}
-
-          {{#if allowReplies _id }}
-            <div class="btn btn-default reply-action" aria-label="Left Align">
-              {{ take key='reply' default='Reply' }}
-            </div>
-          {{/if}}
-
-          {{#if isChangeable}}
-            {{#if isEditable}}
-              <div class="btn btn-default save-action" aria-label="Left Align">
-                {{ take key='save' default='Save' }}
-              </div>
-            {{else}}
-              <div class="btn btn-default edit-action" aria-label="Left Align">
-                {{ take key='edit' default='Edit' }}
-              </div>
-            {{/if}}
-            <div class="btn btn-danger remove-action" aria-label="Left Align">
-              {{ take key='remove' default='Remove' }}
-            </div>
-          {{/if}}
-        </div>
-      </div>
-
-      {{#if addReply}}
-        <div class="create-reply">
-          {{> textarea reply=true scope=this }}
-        </div>
-      {{/if}}
-
-      {{#if reply}}
-        {{#each reply}}
-          {{> commentsSingleComment }}
-        {{/each}}
-      {{/if}}
-    </div>
-  </div>
-  {{/each}}
 </template>
