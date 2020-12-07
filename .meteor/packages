@@ -27,7 +27,6 @@ themeteorchef:bert
 accounts-base
 accounts-password
 session
-arkham:comments-ui
 easy:search
 easysearch:elasticsearch
 easysearch:autosuggest

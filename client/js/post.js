@@ -15,6 +15,22 @@ Template.post.helpers({
 		return false;
 	},
 
+	isLiked: function(){
+		var postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
+
+		if (postLovers.indexOf(Meteor.user().username) > -1) {
+			return true;
+		}
+		return false;
+	},
+
+	hasImg: function(){
+		if (this.img != null) {
+			return true;
+		}
+		return false;
+	},
+
 	showComments: function(){
 		return Template.instance().showComments.get();
 	},
@@ -26,36 +42,38 @@ Template.post.helpers({
 });
 
 Template.post.events({
-	"click #love": function(){
-		var thisPost = Posts.findOne({_id: this.__originalId});
+	"click #love": function(event){
+		var heart = event.target.attributes[4];
 		var postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
 
-		if(Meteor.userId() == thisPost.userId){
+		if(Meteor.userId() == this.userId){
 			Bert.alert("You cannot vote for your own post.", "danger", "growl-top-right");
 		}
 		else {
 			if(postLovers.indexOf(Meteor.user().username) > -1){
 				Bert.alert("You cannot vote twice.", "danger", "growl-top-right");
+
 			}else{
-				Meteor.call("addPostLove", thisPost._id, thisPost.userId, Meteor.user().username);
+				heart.nodeValue = "fas";
+				Meteor.call("addPostLove", this.__originalId, this.userId, Meteor.user().username);
 				Bert.alert("Your vote was placed !", "success", "growl-top-right");
 			}
 		}
 	},
 
 	"click #comment": function(event, template){
-		var txt = document.getElementById('comment');
+		var txt = event.target;
 		if (template.showComments.get() == true) {
 			template.showComments.set(false);
-			txt.innerHTML = `<a href="#">Show comments</a>`;
+			txt.textContent = "Show comments";
 		}else {
 			template.showComments.set(true);
-			txt.innerHTML = `<a href="#">Hide comments</a>`;
+			txt.textContent = "Hide comments";
 		}
 	},
 
-	"click #sendComment": function(){
-		var msg = document.getElementById('msgComment');
+	"click #sendComment": function(event){
+		var msg = event.currentTarget.parentElement.previousElementSibling;
 		Meteor.call("addComment", this.__originalId, msg.value);
 		msg.value = "";
 		Bert.alert("Comment successfully added !", "success", "growl-top-right");

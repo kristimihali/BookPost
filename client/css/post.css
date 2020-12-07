@@ -33,6 +33,14 @@
   margin-bottom: 5%;
 }
 
+.imgContent{
+  text-align: center;
+  margin-bottom: 2%;
+}
+.imgPost{
+  height: 15rem;
+}
+
 #score button {
   border: none;
   background-color: inherit;

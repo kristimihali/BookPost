@@ -1,8 +1,14 @@
 
 .img-avatar {
-  width: 5%;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid black;
 }
 
 .comment-content{
   margin-bottom: 1%;
+}
+
+.actions{
+
 }

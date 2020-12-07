@@ -10,8 +10,8 @@
            - <time>{{ date }}</time>
         </h5>
         {{#if myPost}}
-        <button id="delete-post" type="button" class="btn btn-danger col-1">
-          <i class="fa fa-trash"></i>
+        <button id="delete-post" type="button" class="btn btn-dark col-1">
+          <i class="fa fa-times-circle"></i>
         </button>
         {{/if}}
       </div>
@@ -21,13 +21,24 @@
         <div>
           <h2>{{ postName }}</h2>
           <p class="contentPost">" {{ postContent }} "</p>
+          {{#if hasImg}}
+            <div class="imgContent col-12">
+              <img class="imgPost" src="{{ img }}">
+            </div>
+          {{/if}}
           <p><strong>Book Author :</strong> {{ bookAuthor }}  |  <strong>Book Title :</strong> {{ bookTitle }}</p>
 
           <hr class="my-4">
           <div id="score" class="row">
+            {{#if isLiked}}
             <button id="love" class="col-2">
-              <i class="far fa-heart"></i> {{ loveScore }}
+              <i id="heart" class="fas fa-heart"></i> {{ loveScore }}
             </button>
+            {{else}}
+            <button id="love" class="col-2">
+              <i id="heart" class="far fa-heart"></i> {{ loveScore }}
+            </button>
+            {{/if}}
             <button class="col-2">
               <i class="far fa-comments"></i> {{ nbComments }}
             </button>
