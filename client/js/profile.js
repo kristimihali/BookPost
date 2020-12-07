@@ -89,7 +89,6 @@ Template.profile.helpers({
 	},
 
 	userLoveScore: function(){
-		//return Meteor.user().profile.loveScore;
 		return Template.currentData().profile.loveScore;
 	},
 
@@ -101,12 +100,22 @@ Template.profile.helpers({
 Template.profile.events({
 	"click #btn_suscribe": function(){
 		Meteor.call("suscribe", Template.currentData()._id);
-		Bert.alert(Template.currentData().username+" is your friend now !", "success", "growl-top-right");
+		Bert.alert("You are now subscribe to "+Template.currentData().username, "success", "growl-top-right");
 	},
 
 	"click #btn_unsuscribe": function(){
-		console.log(this);
-		//Meteor.call("unsuscribe", Template.currentData()._id);
+		Meteor.call("unsuscribe", Template.currentData()._id);
+		Bert.alert("Your are no longer subscribe to "+Template.currentData().username, "success", "growl-top-right");
+	},
+
+	"click #btn_rmSubscription": function(){
+		Meteor.call("unsuscribe", this._id);
+		Bert.alert("Your are no longer subscribe to "+this.username, "success", "growl-top-right");
+	},
+
+	"click #btn_rmReader": function(){
+		Meteor.call("removeReader", this._id);
+		Bert.alert("Your have remove "+this.username+" to your readers", "success", "growl-top-right");
 	},
 
 	"click #delete-post": function(){

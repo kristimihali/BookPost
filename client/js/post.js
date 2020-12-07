@@ -16,7 +16,12 @@ Template.post.helpers({
 	},
 
 	isLiked: function(){
-		var postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
+		var postLovers = null;
+		if (this.__originalId) {
+			postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
+		} else {
+			postLovers = Posts.findOne({_id: this._id}, {voted: {$in: Meteor.user().username}}).voted;
+		}
 
 		if (postLovers.indexOf(Meteor.user().username) > -1) {
 			return true;
@@ -36,7 +41,12 @@ Template.post.helpers({
 	},
 
 	comments: function(){
-		return Comments.find({postId: this.__originalId});
+		if (this.__originalId) {
+			return Comments.find({postId: this.__originalId});
+		} else {
+			return Comments.find({postId: this._id});
+		}
+
 	}
 
 });
@@ -44,7 +54,12 @@ Template.post.helpers({
 Template.post.events({
 	"click #love": function(event){
 		var heart = event.target.attributes[4];
-		var postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
+		var postLovers = null;
+		if (this.__originalId) {
+			postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
+		} else {
+			postLovers = Posts.findOne({_id: this._id}, {voted: {$in: Meteor.user().username}}).voted;
+		}
 
 		if(Meteor.userId() == this.userId){
 			Bert.alert("You cannot vote for your own post.", "danger", "growl-top-right");
@@ -55,7 +70,11 @@ Template.post.events({
 
 			}else{
 				heart.nodeValue = "fas";
-				Meteor.call("addPostLove", this.__originalId, this.userId, Meteor.user().username);
+				if (this.__originalId) {
+					Meteor.call("addPostLove", this.__originalId, this.userId, Meteor.user().username);
+				} else {
+					Meteor.call("addPostLove", this._id, this.userId, Meteor.user().username);
+				}
 				Bert.alert("Your vote was placed !", "success", "growl-top-right");
 			}
 		}
@@ -74,17 +93,29 @@ Template.post.events({
 
 	"click #sendComment": function(event){
 		var msg = event.currentTarget.parentElement.previousElementSibling;
-		Meteor.call("addComment", this.__originalId, msg.value);
+		if (this.__originalId) {
+			Meteor.call("addComment", this.__originalId, msg.value);
+		} else {
+			Meteor.call("addComment", this._id, msg.value);
+		}
 		msg.value = "";
 		Bert.alert("Comment successfully added !", "success", "growl-top-right");
 	},
 
 	"click #delete-post": function(){
-		Meteor.call("removePost", this.__originalId);
+		if (this.__originalId) {
+			Meteor.call("removePost", this.__originalId);
+		} else {
+			Meteor.call("removePost", this._id);
+		}
 		Bert.alert("Your Post was deleted !", "success", "growl-top-right");
 	},
 
 	'click': function(){
-		Session.set('selectedPost', this.__originalId);
+		if (this.__originalId) {
+			Session.set('selectedPost', this.__originalId);
+		} else {
+			Session.set('selectedPost', this._id);
+		}
 	}
 });
