@@ -26,7 +26,7 @@
 
 .profile-email h5{
   padding-left: 10%;
-  color: #2d9f9f;
+  color: #1c6363;
   font-style: italic;
   margin-bottom: 15px;
 }
@@ -158,7 +158,7 @@
 }
 
 .profile-content {
-  background-color: #fff;
+  /*background-color: #fff;*/
   margin-right: 2%;
   margin-top: 2%;
   padding-top: 1.5%;
