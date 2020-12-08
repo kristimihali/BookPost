@@ -1,7 +1,14 @@
 Template.messagesChat.helpers({
     messages: function() {
         return Messages.find({}, { sort: { time: -1}});
-    }
+    },
+
+    myMessage: function(){
+      if (this.userId == Meteor.userId()) {
+        return true;
+      }
+      return false;
+    },
 })
 
 Template.inputChat.events = {

@@ -38,14 +38,20 @@
               <h1 class="text-center">CHAT</h1>
               <select class="" name="friends">
                 <option value="default">Choose friend</option>
-                <option value="friend1">friend1</option>
-                <option value="friend2">friend2</option>
+                {{#each subscriptions}}
+                  <option value="{{username}}">{{username}}</option>
+                {{/each}}
               </select>
 
               <hr>
               <div class="messages">
-                {{ > msgFriend }}
-                {{ > msgUser }}
+                {{#each messages}}
+                  {{#if myMessage}}
+                    {{ > msgUser }}
+                  {{else}}
+                    {{ > msgFriend }}
+                  {{/if}}
+                {{/each}}
               </div>
               <hr>
 

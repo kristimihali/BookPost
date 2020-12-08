@@ -53,7 +53,7 @@ Template.post.helpers({
 
 Template.post.events({
 	"click #love": function(event){
-		var heart = event.target.attributes[4];
+		var heart = event.currentTarget.firstElementChild.attributes[4];
 		var postLovers = null;
 		if (this.__originalId) {
 			postLovers = Posts.findOne({_id: this.__originalId}, {voted: {$in: Meteor.user().username}}).voted;
@@ -66,7 +66,13 @@ Template.post.events({
 		}
 		else {
 			if(postLovers.indexOf(Meteor.user().username) > -1){
-				Bert.alert("You cannot vote twice.", "danger", "growl-top-right");
+				heart.nodeValue = "far";
+				if (this.__originalId) {
+					Meteor.call("dislikePost", this.__originalId, this.userId, Meteor.user().username);
+				} else {
+					Meteor.call("dislikePost", this._id, this.userId, Meteor.user().username);
+				}
+				Bert.alert("You removed your vote.", "success", "growl-top-right");
 
 			}else{
 				heart.nodeValue = "fas";

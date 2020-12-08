@@ -3,7 +3,7 @@ import Images from '/lib/collections/collections.js';
 
 Template.profile.helpers({
 	authorised: function(){
-		if (Template.currentData()._id == Meteor.userId()) {
+		if (Router.current().params._id == Meteor.userId()) {
 			return true;
 		}
 		return false;
@@ -27,7 +27,6 @@ Template.profile.helpers({
 			Bert.alert("You are not logged in. Permission denied!","danger","growl-top-right");
 			return false;
 		}else{
-			//return Meteor.user().emails[0].address;
 			return Template.currentData().emails[0].address;
 		}
 	},
@@ -37,7 +36,6 @@ Template.profile.helpers({
 			Bert.alert("You are not logged in. Permission denied!","danger","growl-top-right");
 			return false;
 		}else{
-			//return Meteor.user().username;
 			return Template.currentData().username;
 		}
 	},
@@ -47,7 +45,6 @@ Template.profile.helpers({
 			Bert.alert("You are not logged in. Permission denied!","danger","growl-top-right");
 			return false;
 		}else{
-			//return Meteor.user().profile.profileImage;
 			return Template.currentData().profile.profileImage;
 		}
 	},
@@ -123,36 +120,4 @@ Template.profile.events({
 		Bert.alert("Your Post was deleted!", "success", "growl-top-right");
 	},
 
-	"submit .post-post": function(events){
-		var postName = event.target.postName.value;
-		var postPost = event.target.postPost.value;
-		var bookAuthor = event.target.bookAuthor.value;
-		var bookTitle = event.target.bookTitle.value;
-
-
-		if(isNotEmpty(postName) && isNotEmpty(postPost) && (isNotEmpty(bookAuthor) || isNotEmpty(bookTitle))){
-
-			Meteor.call("addPost", postName, postPost, bookAuthor, bookTitle);
-			event.target.postName.value = "";
-			event.target.postPost.value = "";
-			event.target.bookAuthor.value = "";
-			event.target.bookTitle.value = "";
-
-			$('#newPostModal').modal('hide')
-			Bert.alert("Your opinion was posted!", "success", "growl-top-right");
-		}else{
-			Bert.alert("Type something on each field!", "danger", "growl-top-right");
-		}
-		return false; //prevent submit
-	}
-
 });
-
-//Validation Rules
-var isNotEmpty = function(value){
-	if (value && value != ''){
-		return true;
-	}
-	Bert.alert("Please fill in all fields", "danger", "growl-top-right");
-	return false;
-};

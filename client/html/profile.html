@@ -70,9 +70,11 @@
 										{{username}}
 									</a>
 								</h5>
+								{{#if authorised}}
 								<button id="btn_rmSubscription" type="button" class="btn btn-danger">
 									<i class="fa fa-times"></i>
 								</button>
+								{{/if}}
 							</div>
 						{{else}}
 							<div class="col-12">
@@ -92,9 +94,11 @@
 										{{username}}
 									</a>
 								</h5>
+								{{#if authorised}}
 								<button id="btn_rmReader" type="button" class="btn btn-danger">
 									<i class="fa fa-times"></i>
 								</button>
+								{{/if}}
 							</div>
 						{{else}}
 							<div class="col-12">
@@ -111,14 +115,14 @@
 					<h3 class="col-9">Posts</h3>
 					{{#if authorised}}
 						<button id="btn_postProfile" type="button" class="btn btn-primary col-2"
-									  data-toggle="modal" data-target="#newPostModal">
+									  data-toggle="modal" data-target="#exampleModal">
 							ADD POST <i class="fa fa-plus-circle" style="font-size: 20px"></i>
 						</button>
 						<div class="col-1"></div>
 					{{/if}}
 				</div>
 
-				<div class="modal fade" id="newPostModal" tabindex="-1" role="dialog"
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
 						 aria-labelledby="exampleModalLabel" aria-hidden="true">
 					{{ > postForm }}
 				</div>
