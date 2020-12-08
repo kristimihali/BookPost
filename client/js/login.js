@@ -8,20 +8,6 @@ Tracker.autorun(function(){
 	}
 });
 
-Template.login.rendered = function(){
-
-}
-
-Template.login.rendered = function(){
-	$("#login-link").addClass("selected");
-
-	$("#posts-link").removeClass("selected");
-	$("#search-link").removeClass("selected");
-	$("#rankings-link").removeClass("selected");
-	$("#profile-link").removeClass("selected");
-
-}
-
 Template.login.events({
 	"submit .form-signin": function(event){
 		var username = trimInput(event.target.username.value);

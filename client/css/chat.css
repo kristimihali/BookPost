@@ -16,25 +16,44 @@
 }
 
 .messagesFriend{
-  text-align: left;
   margin: 1%;
   margin-bottom: 2%;
   width: 22rem;
 }
 .messagesUser{
-  text-align: right;
   margin: 1%;
   margin-bottom: 2%;
   width: 22rem;
+}
+.messagesUser .headMsg{
+  text-align: right;
+}
+.messagesFriend .headMsg{
+  text-align: left;
+}
+.headMsg time{
+  font-size: 0.7em;
+  font-style: italic;
 }
 
 .messageFriend{
   background-color: #b37700;
   border-radius: 30px;
-  padding-top: 1%;
+  padding-top: 1.5%;
+  text-align: left;
 }
 .messageUser{
   background-color: #339966;
   border-radius: 30px;
-  padding-top: 1%;
+  padding-top: 1.5%;
+  text-align: right;
+}
+.messageUser p,
+.messageFriend p{
+  padding-top: 2%;
+}
+.messageUser img,
+.messageFriend img{
+  height: 2rem;
+  margin-top: 1%;
 }

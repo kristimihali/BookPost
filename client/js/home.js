@@ -28,10 +28,6 @@ Template.home.helpers({
 		return false;
 	},
 
-	subscriptions: function(){
-		return Meteor.user().profile.subscriptions;
-	},
-
 	renderTmpl: () => Template.renderTemplate,
 	postsIndex: () => PostsIndex,
 });

@@ -1,9 +1,6 @@
 import { Template } from 'meteor/templating';
 
 
-Template.navbar.rendered = function () {
-	// body...
-}
 Template.navbar.helpers({
 	inputAttributes: function(){
 		return { 'class': 'easy-search-input form-control', 'placeholder': 'Start Searching'};
@@ -32,5 +29,5 @@ Template.navbar.events({
 		});
 	},
 
-	
+
 });

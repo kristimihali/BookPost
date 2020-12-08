@@ -1,38 +1,45 @@
-<template name="chat">
-  <h1>Chatapp</h1>
-  <p>
-    Welcome to the example chat app!
-  </p>
-  {{> inputChat }}
-  {{> messagesChat }}
-</template>
-<template name="messagesChat">
-  {{#each messages}}
-    <strong>{{name}}:</strong> {{message}}<br>
-  {{/each}}
-</template>
-<template name="inputChat">
-  <p>Message: <input type="text" id="message"></p>
-</template>
+<template name="chatWindow">
+  <div id="chatWindow">
+    <div class="col-md-12">
 
+      <h1 class="text-center">CHAT</h1>
+
+      <hr>
+      <div class="messages">
+        {{#each messages}}
+          {{#if myMessage}}
+            {{ > msgUser }}
+          {{else}}
+            {{ > msgFriend }}
+          {{/if}}
+        {{/each}}
+      </div>
+      <hr>
+
+      <div class="input-group" style="margin-bottom: 25%;">
+        <input id="message" class="form-control" type="text" name="message" placeholder="Write your message here">
+        <div id="sendMsg" class="input-group-append">
+          <span class="input-group-text"><i class="fa fa-paper-plane" style="font-size: 20px"></i></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</template>
 
 <template name="msgFriend">
   <div class="messagesFriend container">
     <div class="row">
-      <div class="col-md-6">
-        <h5>{{username}}</h5>
+      <div class="col-9">
+        <div class="headMsg">
+          <h5>{{username}}<time> - {{time}}</time></h5>
+        </div>
+        <div class="messageFriend row">
+          <img src="{{profileImg}}" class="rounded-circle col-2">
+          <p class="col-10">{{message}}</p>
+        </div>
       </div>
-      <div class="col-md-6">
-        <time>{{time}}</time>
-      </div>
-    </div>
-    <div class="messageFriend row">
-      <div class="img col-md-2">
-        <img src="profile_image.png" class="rounded-circle" width="25px;">
-      </div>
-      <div class="col-md-10">
-        <p>{{message}}</p>
-      </div>
+      <div class="col-3"></div>
     </div>
   </div>
 </template>
@@ -40,20 +47,17 @@
 <template name="msgUser">
   <div class="messagesUser container">
     <div class="row">
-      <div class="col-md-6">
-        <time>{{time}}</time>
-      </div>
-      <div class="col-md-6">
-        <h5>{{username}}</h5>
-      </div>
-    </div>
-    <div class="messageUser row">
-      <div class="col-md-10">
-        <p>{{message}}</p>
-      </div>
-      <div class="img col-md-2">
-        <img src="profile_image.png" class="rounded-circle" width="25px;">
+      <div class="col-3"></div>
+      <div class="col-9">
+        <div class="headMsg">
+          <h5><time>{{time}} - </time>{{username}}</h5>
+        </div>
+        <div class="messageUser row">
+          <p class="col-10">{{message}}</p>
+          <img src="{{profileImg}}" class="rounded-circle col-2">
+        </div>
       </div>
     </div>
+
   </div>
 </template>

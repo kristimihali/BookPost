@@ -32,38 +32,7 @@
 
       <div class="chat">
         {{#if openChat}}
-          <div id="chatWindow">
-            <div class="col-md-12">
-
-              <h1 class="text-center">CHAT</h1>
-              <select class="" name="friends">
-                <option value="default">Choose friend</option>
-                {{#each subscriptions}}
-                  <option value="{{username}}">{{username}}</option>
-                {{/each}}
-              </select>
-
-              <hr>
-              <div class="messages">
-                {{#each messages}}
-                  {{#if myMessage}}
-                    {{ > msgUser }}
-                  {{else}}
-                    {{ > msgFriend }}
-                  {{/if}}
-                {{/each}}
-              </div>
-              <hr>
-
-              <div class="input-group" style="margin-bottom: 25%;">
-                <input class="form-control" type="text" name="message" placeholder="Write your message here">
-                <div class="input-group-append">
-                  <span class="input-group-text"><i class="fa fa-paper-plane" style="font-size: 20px"></i></span>
-                </div>
-              </div>
-
-            </div>
-          </div>
+          {{ > chatWindow}}
         {{/if}}
         <button id="btn_chat" type="button" class="btn btn-info btn-block">
           <i class="far fa-comments" style="font-size: 20px"></i> OPEN CHAT
