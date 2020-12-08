@@ -19,18 +19,21 @@
 }
 
 .profile-name h2{
-  color: white;
+  padding-left: 10%;
+  color: black;
   font-weight: bold;
 }
 
 .profile-email h5{
-  color: #2d6c9f;
+  padding-left: 10%;
+  color: #2d9f9f;
   font-style: italic;
   margin-bottom: 15px;
 }
 
 .profile-stats {
   color: #202020;
+  padding-left: 10%;
   font-weight: bold;
   font-size: 18px;
 }
@@ -58,7 +61,7 @@
 
 #btn_postProfile {
   padding: 1.25rem;
-  background-color: #336699;
+  background-color: #338a99;
   font-size: 80%;
   font-weight: bold;
   letter-spacing: 0.15rem;
