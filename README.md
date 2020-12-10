@@ -7,23 +7,23 @@ Technologies : JavaScript, HTML, CSS, MongoDB
   
 ## Installation :  
 ### 1-Prerequisite  
-Have installed Meteor on his computer  
+Have Meteor installed.
   
 ### Meteor installation  
 Mac and Linux distributions:  
 ```curl https://install.meteor.com/ | sh ```  
 Windonws:  
-1- Install Chocolatey : https://chocolatey.org/install  
+1- Install Chocolatey: https://chocolatey.org/install  
 2- ```choco install meteor```  
   
-If necessary : https://www.meteor.com/install  
+If necessary: https://www.meteor.com/install  
   
 ### 2- Project download  
 For that you have to get the code  
-- via git :  
+- via git:  
 ```https://github.com/kristimihali/BookPost.git```  
   
-- via zip archive :  
+- via zip archive:  
 https://github.com/kristimihali/BookPost/archive/master.zip  
 Extract data from archive  
   
