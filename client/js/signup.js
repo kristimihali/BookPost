@@ -21,12 +21,11 @@ Template.signup.events({
 				password: password,
 				profile: {
 					profileImage: profileImage,
-					friends: [],
-					nbFriends: 0,
-					followers: [],
-					nbFollowers: 0,
+					subscriptions: [],
+					nbSubscriptions: 0,
+					readers: [],
+					nbReaders: 0,
 					loveScore: 0,
-					voted:[],
 				}
 			}, function(error){
 				if(error){

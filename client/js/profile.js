@@ -53,7 +53,17 @@ Template.profile.helpers({
 		if (!Meteor.user()) {
 			Bert.alert("You are not logged in. Permission denied !", "danger", "growl-top-right");
 		}else {
-			return Template.currentData().profile.subscriptions;
+			var sub = Template.currentData().profile.subscriptions;
+			var res = [];
+
+			if (sub) {
+				sub.forEach( s => {
+						var user = Meteor.users.findOne({_id: s._id});
+						console.log(user);
+						res.push(user);
+				});
+			}
+			return res;
 		}
 	},
 
@@ -69,7 +79,17 @@ Template.profile.helpers({
 		if (!Meteor.user()) {
 			Bert.alert("You are not logged in. Permission denied !", "danger", "growl-top-right");
 		}else {
-			return Template.currentData().profile.readers;
+			var reads = Template.currentData().profile.readers;
+			var res = [];
+
+			if (reads) {
+				reads.forEach(r => {
+					var user = Meteor.users.findOne({_id: r._id});
+					res.push(user);
+				});
+			}
+
+			return res;
 		}
 	},
 
